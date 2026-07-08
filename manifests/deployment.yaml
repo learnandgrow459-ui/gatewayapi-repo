@@ -1,0 +1,92 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identity-deploy
+  labels:
+    app: identity
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: identity
+  template:
+    metadata:
+      name: identity-pod
+      labels:
+        app: identity
+    spec: 
+      containers:
+      - name: identity-container
+        image: syedsohail321/identity-svc:1.0.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: order-deploy
+  labels:
+    app: order
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: order
+  template:
+    metadata:
+      name: order-pod
+      labels:
+        app: order
+    spec: 
+      containers:
+      - name: order-container
+        image: syedsohail321/order-svc:1.0.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-deploy
+  labels:
+    app: catalog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: catalog
+  template:
+    metadata:
+      name: catalog-pod
+      labels:
+        app: catalog
+    spec: 
+      containers:
+      - name: catalog-container
+        image: syedsohail321/catalog-svc:1.0.0
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: basket-deploy
+  labels:
+    app: basket
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: basket
+  template:
+    metadata:
+      name: basket-pod
+      labels:
+        app: basket
+    spec: 
+      containers:
+      - name: basket-container
+        image: syedsohail321/basket-svc:1.0.0
+        ports:
+        - containerPort: 80
