@@ -5,23 +5,17 @@ metadata:
   namespace: argocd
 spec:
   project: default
-
   source:
-    repoURL: https://gateway.envoyproxy.io/helm
     chart: gateway-helm
-    targetRevision: v1.5.4
-
-    helm:
-      releaseName: envoy-gateway
-
+    repoURL: docker.io/envoyproxy
+    targetRevision: v1.8.2
   destination:
-    server: https://kubernetes.default.svc
     namespace: envoy-gateway-system
-
+    server: https://kubernetes.default.svc
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
     automated:
       prune: true
       selfHeal: true
-
-    syncOptions:
-      - CreateNamespace=true
