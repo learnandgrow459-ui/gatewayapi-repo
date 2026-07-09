@@ -19,7 +19,7 @@ spec:
       urlRewrite:
         path:
           type: ReplacePrefixMatch
-          replacePrefixMatch: /
+          replacePrefixMatch: /argocd
 
     backendRefs:
     - name: argocd-server
